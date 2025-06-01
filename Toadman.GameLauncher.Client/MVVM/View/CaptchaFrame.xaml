@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Toadman.GameLauncher.Client.MVVM.View.CaptchaFrame"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metroControls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:Toadman.GameLauncher.Client.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="105" d:DesignWidth="250">
+    <Grid MinWidth="250" Height="105">
+        <Image Name="captchaImage" Height="70" VerticalAlignment="Top" Width="auto" Margin="0,1,33,0" Stretch="Fill"/>
+        <Button Content="↺" Margin="0,1,0,1" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Reset" Style="{DynamicResource BlueButtonStyle}" Height="70" Width="32"/>
+        <TextBox Name="captchaInput" metroControls:TextBoxHelper.Watermark="Type the characters" Height="32" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Style="{DynamicResource DarkTextBoxStyle}" CharacterCasing="Upper"/>
+    </Grid>
+</UserControl>

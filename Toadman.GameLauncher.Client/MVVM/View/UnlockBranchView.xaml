@@ -1,0 +1,57 @@
+﻿<metroControls:MetroWindow x:Class="Toadman.GameLauncher.Client.UnlockBranchView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Toadman.GameLauncher.Client"
+        xmlns:metroControls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Icon="../../Resources/icons/ToadmanIcon48.png"
+        WindowStartupLocation="CenterScreen"
+        TitleCaps="False"
+        ResizeMode="NoResize"
+        TitleForeground="Transparent" 
+        Height="210" Width="300">
+    <metroControls:MetroWindow.Background>
+        <ImageBrush ImageSource="/ToadmanLauncher;component/Resources/loginBG.png"/>
+    </metroControls:MetroWindow.Background>
+    <metroControls:MetroWindow.WindowTitleBrush>
+        <ImageBrush ImageSource="../../Resources/head_line.png"/>
+    </metroControls:MetroWindow.WindowTitleBrush>
+    <Grid Margin="20">
+        <Grid x:Name="spContent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel 
+                Grid.Row="1"
+                Orientation="Vertical"
+                VerticalAlignment="Top">
+                <TextBox
+                    x:Name="txtUnlockBranchPassword"
+                    metroControls:TextBoxHelper.Watermark="{DynamicResource header_UnlockBranchPassword}"
+                    Style="{StaticResource DarkTextBoxStyle}" />
+
+                <TextBlock
+                    x:Name="txtError"
+                    Style="{DynamicResource ErrorTextStyle}"
+                    Margin="0,20,0,0"/>
+
+                <Button
+                    Margin="0,20,0,0"
+                    Content="{DynamicResource header_btn_UnlockBranch}"
+                    Style="{DynamicResource BlueButtonStyle}"
+                    IsDefault="True"
+                    Click="OkHandler"/>
+            </StackPanel>
+        </Grid>
+        <metroControls:ProgressRing
+            x:Name="crlProgressRing"
+            IsActive="False"
+            Width="50"
+            Height="50"
+            VerticalAlignment="Center"/>
+    </Grid>
+</metroControls:MetroWindow>

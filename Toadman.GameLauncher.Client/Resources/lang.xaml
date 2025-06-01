@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="mainMenu_options">Options</v:String>
+
+    <v:String x:Key="header_Login">Login</v:String>
+    <v:String x:Key="header_LogOut">Log out</v:String>
+    <v:String x:Key="header_UserName">Account name</v:String>
+    <v:String x:Key="header_YourUserName">Your account name</v:String>
+    <v:String x:Key="header_Password">Password</v:String>
+    <v:String x:Key="header_RepeatPassword">Repeat password</v:String>
+    <v:String x:Key="header_RepeatNewPassword">Repeat new password</v:String>
+
+    <v:String x:Key="header_NewPassword">New password</v:String>
+    
+    <v:String x:Key="header_email">E-mail</v:String>
+
+    <v:String x:Key="header_ForgotPassword">Can't log in?</v:String>
+    <v:String x:Key="header_CurrentPassword">Current password</v:String>
+    <v:String x:Key="header_ResetPassword">Request password reset</v:String>
+    <v:String x:Key="header_ChangePassword">Change password</v:String>
+    <v:String x:Key="header_Registration">Create a free Toadman account</v:String>
+
+    <v:String x:Key="header_Play">Play</v:String>
+    <v:String x:Key="header_UpdateAndPlay">Update and Play</v:String>
+    <v:String x:Key="header_Purchase">Purchase</v:String>
+    <v:String x:Key="header_Install">Install</v:String>
+    <v:String x:Key="header_Update">Update</v:String>
+    <v:String x:Key="header_SwitchBranch">Switch branch</v:String>
+    <v:String x:Key="header_UnlockBranch">Unlock branch</v:String>
+    <v:String x:Key="header_UnlockBranchPassword">Branch unlock password</v:String>
+    <v:String x:Key="header_ScanAndRepair">Scan and Repair</v:String>
+    <v:String x:Key="header_Uninstall">Uninstall</v:String>
+    <v:String x:Key="header_SelectInstallFolder">Select folder</v:String>
+    <v:String x:Key="header_AvailableBranches">Select branch to switch to</v:String>
+    
+    <v:String x:Key="header_GuardCode">Confirmation code</v:String>
+    <v:String x:Key="header_btn_CheckGuardCode">Verify me</v:String>
+    <v:String x:Key="header_btn_ResetPassword">Reset my password</v:String>
+    <v:String x:Key="header_btn_ConfirmAccount">Confirm my account</v:String>
+    <v:String x:Key="header_btn_Back">Back</v:String>
+    <v:String x:Key="header_btn_HaveAnAccount">I already have an account</v:String>
+    <v:String x:Key="header_btn_LogMeIn">Log me in instead</v:String>
+    <v:String x:Key="header_btn_SwitchBranch">Switch branch</v:String>
+    <v:String x:Key="header_btn_UnlockBranch">Unlock branch</v:String>
+    <v:String x:Key="header_btn_ResendCode">Resend code</v:String>
+
+    <v:String x:Key="header_GameTotalSize">Size on Disk</v:String>
+    <v:String x:Key="header_GameDownloadSize">Download size</v:String>
+
+    <v:String x:Key="toolTip_button_SwitchBranch">Click to switch</v:String>
+
+    <v:String x:Key="driveSelector_caption_selectedDrive">Drive</v:String>
+
+    <v:String x:Key="settings_caption_UpdateChannel">Application update channel</v:String>
+    <v:String x:Key="settings_caption_RunOnStartUp">Run on windows startup</v:String>
+    <v:String x:Key="settings_btn_Apply">Save settings</v:String>
+    
+    <v:String x:Key="error_IncorrectCredential">Invalid password or username</v:String>
+    <v:String x:Key="error_IncorrectCode">Sorry, that is not quite right</v:String>
+    <v:String x:Key="error_UnlockBranch_InvalidPassword">Invalid unlock branch password</v:String>
+    <v:String x:Key="error_Failure">Internal server error</v:String>
+    <v:String x:Key="error_InvalidEmail">Invalid e-mail address</v:String>
+    <v:String x:Key="error_InvalidUsername">Invalid username</v:String>
+    <v:String x:Key="error_InvalidPassword">Invalid password</v:String>
+    <v:String x:Key="error_InvalidCurrentPassword">Invalid current password</v:String>
+    <v:String x:Key="error_InvalidNewPassword">Invalid new password</v:String>
+    <v:String x:Key="error_InvalidRepeatPassword">Invalid repeat password</v:String>
+    <v:String x:Key="error_EmailAlreadyRegistered">E-mail address already registered</v:String>
+    <v:String x:Key="error_UsernameAlreadyRegistered">Username already registered</v:String>
+    <v:String x:Key="error_AlreadyLoggedIn">Already logged in</v:String>
+    <v:String x:Key="error_NotLoggedIn">Not logged in</v:String>
+    <v:String x:Key="error_AccountNotExists">Account not exists</v:String>
+    <v:String x:Key="error_AccountNotActivated">Account not activated</v:String>
+    <v:String x:Key="error_AccountIsBlocked">Account is blocked</v:String>
+    <v:String x:Key="error_AccountIsDeleted">Account is deleted</v:String>
+    <v:String x:Key="error_ServerNotAvailable">Server not available</v:String>
+    <v:String x:Key="error_PasswordMismatch">Passwords does not match</v:String>
+    <v:String x:Key="error_CaptchaExpired">CAPTCHA is expired</v:String>
+    <v:String x:Key="error_InvalidCaptchaKey">Invalid CAPTCHA key</v:String>
+    <v:String x:Key="error_InvalidCaptchaResponse">Invalid CAPTCHA answer</v:String>
+</ResourceDictionary>

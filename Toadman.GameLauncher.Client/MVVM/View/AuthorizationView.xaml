@@ -1,0 +1,382 @@
+﻿<metroControls:MetroWindow x:Class="Toadman.GameLauncher.Client.AuthorizationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Toadman.GameLauncher.Client"
+        xmlns:metroControls="http://metro.mahapps.com/winfx/xaml/controls"
+                           xmlns:view="clr-namespace:Toadman.GameLauncher.Client.MVVM.View"
+                           Name="SingUp"
+        WindowStyle="None"
+        Icon="../../Resources/icons/ToadmanIcon48.png"
+        WindowStartupLocation="CenterScreen"
+        TitleCaps="False"
+        ResizeMode="NoResize"
+        TitleForeground="Transparent"
+        local:WindowExtensions.DialogResult="{Binding Path=DialogResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Height="345" 
+        Width="400"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True">
+    <metroControls:MetroWindow.Resources>
+        <Storyboard x:Key="showGrid">
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity" 
+                Duration="0:0:0"
+                To="0" />
+            <DoubleAnimation 
+                Storyboard.TargetName="SingUp" 
+                Storyboard.TargetProperty="Height" 
+                BeginTime="0:0:.25"
+                Duration="0:0:.25" />
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity" 
+                BeginTime="0:0:0.5"
+                Duration="0:0:.25"
+                To="1" />
+            <ObjectAnimationUsingKeyFrames 
+                BeginTime="00:00:.25" 
+                Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:.25" 
+                                        Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="hideGrid">
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity" 
+                Duration="0:0:.25" 
+                To="0" />
+            <ObjectAnimationUsingKeyFrames 
+                BeginTime="00:00:0"
+                Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:.25" 
+                                        Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </metroControls:MetroWindow.Resources>
+
+    <metroControls:MetroWindow.Background>
+        <ImageBrush ImageSource="/ToadmanLauncher;component/Resources/loginBG.png"/>
+    </metroControls:MetroWindow.Background>
+    <metroControls:MetroWindow.WindowTitleBrush>
+        <ImageBrush ImageSource="../../Resources/head_line.png"/>
+    </metroControls:MetroWindow.WindowTitleBrush>
+
+    <Border 
+        BorderThickness="0"
+        Padding="40,15">
+        <Grid VerticalAlignment="Stretch" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="69"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Image  
+                Source="/ToadmanLauncher;component/Resources/toadman_logo_big_new.png"
+                HorizontalAlignment="Center"
+                Width="320" Height="69"
+                Grid.Row="0" />
+
+            <DockPanel 
+                x:Name="DockPanelContent"
+                Margin="0,0,-2,0"
+                Grid.Row="2">
+
+                <Grid x:Name="AuthorizationGrid"
+                    Visibility="Collapsed"
+                    DataContext="{Binding Path=AuthorizationVM}"
+                    Width="320">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0"
+                        Text="{Binding Path=UserName}"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_UserName}"
+                        Style="{StaticResource ResourceKey=DarkTextBoxStyle}"
+                        Margin="0,0,0,10"/>
+                    <PasswordBox Grid.Row="1"
+                        x:Name="UserPassword"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_Password}"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+                    <Button Grid.Row="2"
+                        Content="{DynamicResource header_ForgotPassword}"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Right" 
+                        Command="{Binding Path=ForgotPasswordCommand}"
+                        Style="{StaticResource LinkButtonStyle}" />
+
+                    <CheckBox Grid.Row="3"
+                        VerticalAlignment="Center"
+                        FontFamily="/ToadmanLauncher;component/Resources/#Comfortaa"
+                        FontSize="16"
+                        Foreground="White"
+                        Visibility="Collapsed"
+                        Background="Black"
+                        BorderBrush="#FF232F37"
+                        Content="Remember me"
+                        IsChecked="True" />
+
+                    <TextBlock Grid.Row="4"
+                        Visibility="{Binding Path=ErrorVisibility}"
+                        Text="{Binding Path=ErrorText}"
+                        Style="{DynamicResource ErrorTextStyle}"
+                        Padding="0,20"/>
+                    
+                    <Button Grid.Row="5" 
+                        Cursor="Hand"
+                        Content="{DynamicResource header_Login}"
+                        Command="{Binding Path=LoginCommand}"
+                        Style="{StaticResource GreenButtonStyle}"
+                        TabIndex="0"
+                        IsDefault="True"
+                        Margin="0,0,0,25"/>
+
+                    <Button Grid.Row="6" 
+                        Cursor="Hand"
+                        Content="{DynamicResource header_Registration}"
+                        Command="{Binding Path=ToRegistrationCommand}"
+                        Style="{StaticResource LinkButtonStyle}" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid x:Name="RegistrationGrid"
+                    Visibility="Collapsed"
+                    DataContext="{Binding Path=RegistrationVM}"
+                    Width="320">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0"
+                        Text="{Binding Path=UserName}"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_UserName}"
+                        Style="{StaticResource DarkTextBoxStyle}"
+                        Margin="0,0,0,10"
+                        ToolTipService.ShowDuration="15000"
+                        ToolTipService.IsEnabled="{Binding Path=IsShowUsernameRules}">
+                        <TextBox.ToolTip>
+                            <TextBlock>
+		                        Username should follow these rules:
+		                        <LineBreak /> 
+		                        - 4 to 32 characters length
+		                        <LineBreak /> 
+		                        - should start with a latin letter
+		                        <LineBreak /> 
+		                        - should end with a latin letter or digit
+		                        <LineBreak /> 
+		                        - can contain latin letters, digits and special characters: - . _
+		                        <LineBreak /> 
+		                        - can not contain more than one special character in a row
+                            </TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+
+                    <TextBox Grid.Row="1"
+                        Text="{Binding Path=Email}"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_email}"
+                        Style="{StaticResource DarkTextBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox
+                        Grid.Row="2"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_Password}"
+                        x:Name="UserRegisterPassword" 
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox Grid.Row="3"
+                        x:Name="UserRepeatRegisterPassword"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_RepeatPassword}"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <view:CaptchaFrame Width="auto" Margin="0,0,0,10" x:Name="CaptchaFrame" Grid.Row="4" />
+
+                    <TextBlock Grid.Row="5"
+                        Visibility="{Binding Path=ErrorVisibility}"
+                        Text="{Binding Path=ErrorText}"
+                        Style="{DynamicResource ErrorTextStyle}" Margin="0"
+                        VerticalAlignment="Center"/>
+
+                    <Button Grid.Row="6" 
+                        Margin="0,0,0,25" 
+                        Cursor="Hand"
+                        Content="{DynamicResource header_Registration}"
+                        Command="{Binding Path=RegistrationCommand}"
+                        Style="{StaticResource BlueButtonStyle}"/>
+
+                    <Button Grid.Row="7" 
+                        Cursor="Hand"
+                        Content="{DynamicResource header_btn_HaveAnAccount}"
+                        Command="{Binding Path=ToBackCommand}"
+                        Style="{StaticResource LinkButtonStyle}" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid x:Name="ChangePasswordGrid"
+                    Visibility="Collapsed"
+                    DataContext="{Binding Path=ChangePasswordVM}"
+                    Width="320">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <PasswordBox Grid.Row="0"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_CurrentPassword}"
+                        x:Name="pswCurrentChangePassword"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox Grid.Row="1"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_NewPassword}"
+                        x:Name="pswChangePassword"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox Grid.Row="2"
+                        x:Name="pswRepeatChangePassword" 
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_RepeatNewPassword}"
+                        Style="{StaticResource DarkPasswordBoxStyle}" 
+                        Margin="0"/>
+
+                    <TextBlock Grid.Row="3"
+                        Visibility="{Binding Path=ErrorVisibility}"
+                        Text="{Binding Path=ErrorText}"
+                        Style="{DynamicResource ErrorTextStyle}"/>
+
+                    <Button Grid.Row="4" 
+                        Margin="0" 
+                        VerticalAlignment="Top"
+                        Content="{DynamicResource header_ChangePassword}"
+                        Command="{Binding Path=ChangePasswordCommand}"
+                        Style="{StaticResource BlueButtonStyle}"/>
+                </Grid>
+
+                <Grid x:Name="ResetPasswordGrid"
+                    Visibility="Collapsed"
+                    DataContext="{Binding Path=ResetPasswordVM}"
+                    Width="320">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_YourUserName}"
+                        Text="{Binding Path=UserName}"
+                        Style="{StaticResource DarkTextBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox Grid.Row="1"
+                        x:Name="pswResetPassword" 
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_NewPassword}"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <PasswordBox Grid.Row="2"
+                        x:Name="pswRepeatResetPassword" 
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_RepeatNewPassword}"
+                        Style="{StaticResource DarkPasswordBoxStyle}"
+                        Margin="0,0,0,10"/>
+
+                    <TextBlock Grid.Row="4"
+                        Visibility="{Binding Path=ErrorVisibility}"
+                        Text="{Binding Path=ErrorText}"
+                        Style="{DynamicResource ErrorTextStyle}"/>
+                    
+                    <Button Grid.Row="5" 
+                        x:Name="ResetPasswordButton"
+                        Margin="0,0,0,25"
+                        Cursor="Hand"
+                        Command="{Binding Path=ResetPasswordCommand}"
+                        Content="{DynamicResource header_ResetPassword}"
+                        Style="{StaticResource BlueButtonStyle}"/>
+                    
+                    <Button Grid.Row="6" 
+                        Cursor="Hand"
+                        Content="{DynamicResource header_btn_LogMeIn}"
+                        Command="{Binding Path=ToBackCommand}"
+                        Style="{StaticResource LinkButtonStyle}" 
+                        Margin="0"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="CodeConfirmGrid"
+                    Visibility="Collapsed"
+                    DataContext="{Binding Path=CodeConfirmVM}"
+                    Width="320">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0"
+                        Text="{Binding Path=Code}"
+                        metroControls:TextBoxHelper.Watermark="{DynamicResource header_GuardCode}"
+                        Style="{StaticResource DarkTextBoxStyle}"
+                        Margin="0"/>
+
+                    <TextBlock Grid.Row="1"
+                        Visibility="{Binding Path=ErrorVisibility}"
+                        Text="{Binding Path=ErrorText}"
+                        Style="{DynamicResource ErrorTextStyle}"/>
+
+                    <Button Grid.Row="2"
+                        Margin="0,0,0,25"
+                        Cursor="Hand"
+                        VerticalAlignment="Top"
+                        Command="{Binding Path=CheckCodeCommand}"
+                        Content="{Binding Path=ButtonCaption}"
+                        Style="{StaticResource BlueButtonStyle}"/>
+
+                    <Button
+                        Margin="0"
+                        Grid.Row="3"
+                        Command="{Binding Path=ResendCodeCommand}"
+                        HorizontalAlignment="Center"
+                        Content="{DynamicResource header_btn_ResendCode}"
+                        Style="{DynamicResource LinkButtonStyle}"/>
+                </Grid>
+            </DockPanel>
+
+            <metroControls:ProgressRing 
+                x:Name="ProgressIndicator"
+                Visibility="Collapsed"
+                IsActive="False"
+                Grid.RowSpan="3"
+                Foreground="#FFD9D9DA"/>
+        </Grid>
+    </Border>
+</metroControls:MetroWindow>

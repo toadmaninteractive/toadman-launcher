@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Toadman.Bloodties.Launcher.PageBuildNotesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Toadman.Bloodties.Launcher"
+             mc:Ignorable="d" 
+             d:DesignHeight="594" d:DesignWidth="1028">
+    <Grid
+        Background="#D8000000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="620" />
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Left"
+            Source="/BloodtiesLauncher;component/Resources/Background/pageBuildNotes_background.png"/>
+
+        <Grid 
+            Grid.Column="1"
+            Margin="0,0,42,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Text="Build notes"
+                VerticalAlignment="Top"
+                Margin="0,30,0,0"
+                Style="{DynamicResource Title}"/>
+
+            <ScrollViewer
+                Grid.Row="1"
+                Margin="0,0,0,15"
+                HorizontalAlignment="Stretch" 
+                VerticalScrollBarVisibility="Visible">
+
+                <StackPanel>
+                    <TextBlock
+                        Style="{DynamicResource Text}"
+                        Padding="0,8,10,8">
+                        The latest build of Bloodlines delivers explosive action in new areas of City Seven! As the conflict between the Reapers and the Ascended escalate, both sides bring new weapons to bear on their enemies.
+                        </TextBlock>
+
+                    <FlowDocumentScrollViewer 
+                        VerticalScrollBarVisibility="Disabled">
+                        <FlowDocument PagePadding="0">
+                            <List Style="{DynamicResource ListText}">
+                                <ListItem>
+                                    <Paragraph>New HQ: The first look at the ancient Black Temple</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>New Classes: First views of the Watcher and Thaumaturge classes bring Sniper and Mage action to the team.</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>New Level: The Bazaar - Find the secret caches of the resistance and punish those who would help them!</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>New Weapon: SMG</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>Work-In-Progress Levels: The Manchester Star, HMR Warehouse, and The Wall</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>and More (See Change in documentation of Milestone)</Paragraph>
+                                </ListItem>
+                            </List>
+                        </FlowDocument>
+                    </FlowDocumentScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

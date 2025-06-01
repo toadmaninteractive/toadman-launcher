@@ -1,0 +1,42 @@
+﻿<metroControls:MetroWindow x:Class="Toadman.GameLauncher.Client.LoadingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Toadman.GameLauncher.Client"
+        xmlns:metroControls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Downloading update..."
+        TitleCaps="False"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Height="100" Width="400">
+    <metroControls:MetroWindow.Resources>
+        <local:SizeFormatConverter x:Key="SizeFormatConverter"/>
+    </metroControls:MetroWindow.Resources>
+    <metroControls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Image Margin="10,2" 
+                   Source="/ToadmanLauncher;component/Resources/icons/ToadmanIcon48.png"/>
+        </DataTemplate>
+    </metroControls:MetroWindow.IconTemplate>
+    <Grid
+        Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            VerticalAlignment="Center">
+            <Run Text="{Binding Path=DownloadProgress, Converter={StaticResource SizeFormatConverter}}"/>
+            <Run>/</Run>
+            <Run Text="{Binding Path=InstallationFileSize, Converter={StaticResource SizeFormatConverter}}"/>
+        </TextBlock>
+        <ProgressBar
+            Minimum="0"
+            Maximum="{Binding Path=InstallationFileSize}"
+            Value="{Binding Path=DownloadProgress}"
+            Grid.Row="1"
+            Height="20"/>
+    </Grid>
+</metroControls:MetroWindow>

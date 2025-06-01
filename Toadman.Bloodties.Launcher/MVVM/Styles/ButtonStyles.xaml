@@ -1,0 +1,221 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Toadman.Bloodties.Launcher">
+    <Style x:Key="TitleNavigation" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Foreground" Value="#FFE5E5E5"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/BloodtiesLauncher;component/Resources/Buttons/title_navigaton.png"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani SemiBold"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="53"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="border" 
+                                BorderThickness="1" 
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter 
+                                x:Name="Content" 
+                                RecognizesAccessKey="True" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+
+                        <Image 
+                            x:Name="img"
+                            Visibility="Hidden"
+                            Height="10"
+                            Grid.Row="1"
+                            Source="/BloodtiesLauncher;component/Resources/Buttons/title_navigaton.png" 
+                            Stretch="Fill"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="img" Property="Visibility" Value="Visible" />
+                            <Setter Property="Foreground" Value="#FFEA2B4F" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="Launch" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani-Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="245"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image
+                            x:Name="img"
+                            Stretch="UniformToFill"
+                            Source="/BloodtiesLauncher;component/Resources/Buttons/play_btn.png">
+                            <Image.Clip>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="0,0" IsClosed="True">
+                                        <LineSegment Point="245,0" />
+                                        <LineSegment Point="200,40" />
+                                        <LineSegment Point="0,40" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Image.Clip>
+                        </Image>
+                        <ContentPresenter
+                            Margin="30,0,0,0"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center"/>
+                    </Grid>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img"
+                                    Property="Source"
+                                    Value="/BloodtiesLauncher;component/Resources/Buttons/play_btn_hover.png" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Common" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="150" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani"/>
+        <Setter Property="FontSize" Value="16"/>
+        <!--<Setter Property="Background" Value="#FF4A4F85" />
+        <Setter Property="Foreground" Value="Ivory" />-->
+    </Style>
+
+    <Style x:Key="WindowCommandButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="NewsNavigationNext" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill">
+                        <Path
+                            x:Name="pth"
+                            Fill="#FFDFDFDF"
+                            Data="M0,0 L18.3918,0 L27.4163,16 L18.2775,31.875 L0.110992,32 L9.13877,15.625 z"/>
+                    </Viewbox>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFE9073C" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFF9376C" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NewsNavigationPreview" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill">
+                        <Path
+                            x:Name="pth"
+                            Fill="#FFDFDFDF"
+                            Data="M9.625,0 L25,0.125 L15.75,16 L25,32 L9.625,32 L0,15.978 z"/>
+                    </Viewbox>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFE9073C" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFF9376C" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NewsNavigationMenu" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="/BloodtiesLauncher;component/Resources/Fonts/#Rajdhani Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="15"/>
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="Margin" Value="-7,0,0,0"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill">
+                        <Path
+                            x:Name="pth"
+                            Fill="#FF33080F"
+                            Data="M27.5305,0 L54.718,0 L27.5305,31.875 L0.110992,32 z"/>
+                    </Viewbox>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFC50D2B" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFF9376C" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=IsSelected}" Value="True">
+                            <Setter TargetName="pth" Property="Fill" Value="#FFFE1946" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
